@@ -45,9 +45,10 @@ export const MainScreen = () => {
         try {
             const resp = await fetch(`https://cat-wiki-api-nr.herokuapp.com/breeds/search/?q=${breed}`);
             const { cat } = await resp.json();
+            console.log(cat);
 
             localStorage.setItem('cat', JSON.stringify(cat));
-            navigate('/breed');
+            navigate(`/breed/${ cat.name }`);
         } catch (error) {
             Swal.fire('Error', 'ingresa una de las razas sugeridas', 'error');
         }
@@ -88,7 +89,7 @@ export const MainScreen = () => {
                             type="text"
                             name="breed"
                             id='breed'
-                            placeholder="Search for a cat breed"
+                            placeholder="Search"
                             autoComplete='off'
                             onSelect={handleShowPossibleOutcomes}
                             onChange={handleInputChange}

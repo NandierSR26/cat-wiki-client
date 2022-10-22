@@ -12,7 +12,7 @@ export const AppRouter = () => {
                     <MainScreen />
                 }/>
 
-                <Route path='/breed' element={
+                <Route path='/breed/:breedId' element={
                     <BreedScreen />
                 }/>
 

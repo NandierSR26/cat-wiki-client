@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import { Catphoto } from '../components/Catphoto';
 import { Levels } from '../components/Levels';
 import { Specs } from '../components/Specs';
 
 export const BreedScreen = () => {
+
+    const { breedId } = useParams()
+    console.log(breedId);
 
     const [photo, setPhoto] = useState([])
     let cat = JSON.parse(localStorage.getItem('cat'));
@@ -43,6 +47,10 @@ export const BreedScreen = () => {
 
     useEffect(() => {
         getPhotos();
+
+        return () => {
+            localStorage.clear()
+        }
     }, [])
 
 
